@@ -1,0 +1,11 @@
+<header>
+  <nav>
+    <a routerLink="/" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }" data-testid="nav-home">トップ</a>
+    <a routerLink="/legacy-naive" routerLinkActive="on">A: 無理やり</a>
+    <a routerLink="/legacy-wrapped" routerLinkActive="on">A: 包む</a>
+  </nav>
+</header>
+<main>
+  <router-outlet />
+</main>
+<app-diagnostics-panel />

@@ -1,0 +1,62 @@
+<h1>{{ title }}</h1>
+<p class="lead">{{ lead }}</p>
+
+<section>
+  <h2>1. カルーセル <small>owl.carousel 1.3.3</small></h2>
+  <p class="row">
+    <button type="button" (click)="swap()" data-testid="swap">商品を入れ替える</button>
+    <span>データ上の商品: <strong data-testid="data-set">{{ setLabel() }}</strong></span>
+  </p>
+  <div class="owl-carousel" #carousel data-testid="carousel">
+    @for (p of products(); track p.code) {
+      <div class="card" data-testid="carousel-item">
+        <img [src]="p.image" width="160" height="160" alt="" />
+        <p class="name">{{ p.name }}</p>
+        <p class="price">{{ p.price }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section>
+  <h2>2. ポップアップ <small>jquery.colorbox 1.5.14</small></h2>
+  <ul class="links">
+    @for (p of products().slice(0, 3); track p.code) {
+      <li><a class="gallery" rel="gallery" [href]="p.image" [attr.title]="p.name">{{ p.name }} を大きく見る</a></li>
+    }
+  </ul>
+</section>
+
+<section>
+  <h2>3. 画像の拡大 <small>jquery.zoom 1.7.13</small></h2>
+  <p>画像の上にマウスを載せると拡大します。</p>
+  <span class="zoom" #zoom><img [src]="products()[0].image" width="320" height="320" alt="" /></span>
+</section>
+
+<section>
+  <h2>4. タブ <small>jQuery UI 1.12.1 tabs</small></h2>
+  <div #tabs data-testid="tabs">
+    <ul>
+      <li><a [attr.href]="tabHref('tab-desc')">説明</a></li>
+      <li><a [attr.href]="tabHref('tab-spec')" data-testid="tab-spec">仕様</a></li>
+      <li><a [attr.href]="tabHref('tab-review')">レビュー</a></li>
+    </ul>
+    <div id="tab-desc">ミラーレスの入門機です。</div>
+    <div id="tab-spec" data-testid="tab-spec-panel">重さ 390 g / 有効画素数 2,420 万</div>
+    <div id="tab-review">★★★★☆ 持ちやすい</div>
+  </div>
+</section>
+
+<section>
+  <h2>5. 処理中の画面ロック <small>jquery.blockUI 2.66</small></h2>
+  <p class="row" #buyBox>
+    <button type="button" (click)="addToCart()" data-testid="add-to-cart">カートに入れる(2 秒かかる)</button>
+    <span>カートの数: <strong>{{ cartCount() }}</strong></span>
+  </p>
+</section>
+
+<section>
+  <h2>6. 日付の入力 <small>jQuery UI 1.12.1 datepicker</small></h2>
+  <p>入力欄を押すとカレンダーが開きます。下のボタン「閉じる」の文言は CMS から来ている想定です。</p>
+  <input #date type="text" placeholder="お届け希望日" data-testid="date" />
+</section>

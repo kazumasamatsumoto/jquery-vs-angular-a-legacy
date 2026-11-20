@@ -1,0 +1,22 @@
+@use 'page-common';
+
+.card {
+  margin: 0 8px;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  text-align: center;
+  background: #fff;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.zoom {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
