@@ -143,7 +143,7 @@ async function run() {
     r.tab = await page.evaluate((sel) => {
       const panel = document.querySelector(sel);
       const text = panel?.textContent ?? '';
-      return { ok: text.includes('重さ 390 g'), length: text.length, hasNestedPage: !!panel?.querySelector('app-root, h1') };
+      return { ok: text.includes('重さ 390 g'), length: text.length, hasNestedPage: document.querySelectorAll('app-root').length > 1 };
     }, p.specPanel);
     r.tabRequests = requests;
 
